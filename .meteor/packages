@@ -5,7 +5,6 @@
 
 standard-app-packages
 insecure
-preserve-inputs
 jquery
 accounts-password
 accounts-ui
