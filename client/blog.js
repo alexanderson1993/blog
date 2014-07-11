@@ -9,23 +9,9 @@ if (Meteor.isServer) {
 }
 
 if (Meteor.isClient) {
-Router.map(function () {
-
-     this.route('aboutMe', {
-         path: '/',
-         template: 'aboutMe'
-     });
-
-     this.route('portfolio', {
-         path: '/portfolio',
-         template: 'portfolio'
-     });
-
-});
 
   Meteor.startup(function () {
       $('body').addClass('full');
-      Blog.config
 });
       Template.navigator.events = {
         'click .portfolio': function(e) {
@@ -39,11 +25,5 @@ Router.map(function () {
         document.getElementById("portfolio").setAttribute("style","display:none");
           } 
       };
-
-  Blog.config({
-  blogIndexTemplate: 'myBlogIndexTemplate',
-  blogShowTemplate: 'myBlogShowTemplate'
-});
-    
 }
 
