@@ -89,7 +89,10 @@ if (Meteor.isClient) {
 	});
   Blog.config({
     blogIndexTemplate: 'myBlogIndexTemplate',
-    blogShowTemplate: 'myShowBlogTemplate'
+    blogShowTemplate: 'myShowBlogTemplate',
+    comments: {
+      disqusShortname: 'alexanderson1993'
+    }
   });
   
   Template.blogIndex.rendered = function(){

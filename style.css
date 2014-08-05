@@ -15,10 +15,11 @@ body:before {
 }
 
 .full{
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;}
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
   
   #commentable-area:first-child:first-letter { float: left; color: #903; font-size: 75px; line-height: 60px; padding-top: 4px; padding-right: 8px; padding-left: 3px; font-family: Georgia; }
   #main .container .panel p {
@@ -30,14 +31,6 @@ body:before {
     margin-bottom: 50px;
     background: none;
     font-family: 'Josefin Sans', sans-serif;
-  }
-
-  .full {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    transition: opacity 0.5s ease;
   }
 
   .backer {
@@ -124,21 +117,21 @@ body:before {
   color: #bbb;
 }
 #mymeteor-blog.blog-single article.post {
-
+    
   font-size: 20px;
   border-bottom: 1px solid #EEE;
   padding-bottom: 10px;
   margin-bottom: 30px;
 }
 #mymeteor-blog.blog-single article.post p:first-child:first-letter { 
-  float: left;
-  color: #903; 
-  font-size: 70px; 
-  line-height: 55px; 
-  padding-top: 4px; 
-  padding-right: 8px; 
-  padding-left: 3px; 
-  font-family: Georgia; 
+    float: left;
+    color: #903; 
+    font-size: 70px; 
+    line-height: 55px; 
+    padding-top: 4px; 
+    padding-right: 8px; 
+    padding-left: 3px; 
+    font-family: Georgia; 
 }
 #mymeteor-blog.blog-single article.post .post-meta {
   color: #bbb;
@@ -183,4 +176,5 @@ body:before {
   margin-right: 10px;
   font-size: 18px;
 }
+
 
