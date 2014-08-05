@@ -13,3 +13,5 @@ accounts-base
 bootstrap-3
 iron-router
 blog
+fileCollection
+jquery-cookie

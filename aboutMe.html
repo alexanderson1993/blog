@@ -1,0 +1,50 @@
+ <template name="aboutMe">
+ <style>
+ .full{ background: url(/background.jpg) no-repeat center center fixed;}
+  </style>
+ <div class="container" id="main">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 col-lg-offset-8 col-md-offset-7 col-sm-offset-9 panel">
+            <h1 class="page-header">R. Alex Anderson</h1>
+              <p>R. Alex Anderson is a {{age}} year old college student living in Pleasant Grove. He enjoys creating, sharing, exploring, teaching and learning. He currently works at <a href="http://www.blenderbottle.com">BlenderBottle</a> of Lehi, Utah in the IT Department. He is also co-founder of the educational software venture <a href="http://infinitedev.com">Infinite Development</a>.</p><p>In former days, he was flight director for the <a href="http://spacecenter.alpineschools.org">Christa McAuliffe Space Education Center</a>, serving as designer, programmer, and all-around computer genius.</p>
+           	<p>He is enrolled at <a href="http://byu.edu">Brigham Young University</a>, where he studies graphic design.</p>
+              <p>Alex recently completed a <a href="http://pittsburghmissionmemoirs.blogspot.com">two year mission</a> for the Church of Jesus Christ of Latter-day Saints in Pittsburgh, Pennsylvania.</p>            
+              </div>
+            </div>
+        </div>
+</template>
+
+<template name="404">
+<div class="panel">
+    I'm sorry. The page you are looking for is not available.
+    </div>
+</template>
+
+<template name="myBlogIndexTemplate">
+  <style> .full{ background: url(/blogback-min.jpg) no-repeat center center fixed;}</style>
+    <div id="mymeteor-blog" class="blog-list">
+    <div class="container panel">
+      <h1 class="page-header">Blog <small>It is what it is...</small></h1>
+      <div class="row">
+        <div class="col-md-8">
+          {{> blogIndex}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="myShowBlogTemplate">
+  <style> .full{ background: url(/blogback-min.jpg) no-repeat center center fixed;}</style>
+ <div id="mymeteor-blog" class="blog-single">
+    <div class="container">
+      <div class="row panel">
+        <div class="col-md-8">
+          {{> blogShow}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+                
+            

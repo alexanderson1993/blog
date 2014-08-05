@@ -1,0 +1,17 @@
+<template name="portfolio">
+
+  <style> .full{ background: url(/pittsburgh.jpg) no-repeat center center fixed;}</style>
+  <div class="portfolio">
+    <h1 class="page-header">Portfolio <small>See all my stuff</small></h1>
+
+      {{#each portfolios}}
+      <div class="item">
+        <div class="caption">
+          <img src={{imagesource}} />
+          <h3>{{{title}}}</h3>
+          <p>{{description}}</p>
+        </div>
+      </div>
+      {{/each}}
+      </div>
+</template>
