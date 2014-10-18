@@ -15,10 +15,10 @@ body:before {
 }
 
 .full{
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
+  -webkit-background-size:  100% 100%;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100% 100%;
 }
   
   #commentable-area:first-child:first-letter { float: left; color: #903; font-size: 75px; line-height: 60px; padding-top: 4px; padding-right: 8px; padding-left: 3px; font-family: Georgia; }
@@ -47,6 +47,7 @@ body:before {
   -moz-box-shadow: 0px 0px 5px #000000;
   -webkit-box-shadow: 0px 0px 5px #000000;
   box-shadow: 0px 0px 5px #000000;
+  margin-bottom: 100px;
 }
 .dropdown-menu {
   color:#999999;

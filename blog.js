@@ -1,5 +1,5 @@
 Portfolio = new Meteor.Collection('portfolio');
-photos = new FileCollection('photos',
+/*photos = new FileCollection('photos',
   { resumable: true,   // Enable built-in resumable.js upload support
   	http: [
   	{ method: 'get',
@@ -9,7 +9,7 @@ photos = new FileCollection('photos',
         }
       }
       ]
-    });
+    });*/
 if (Meteor.isServer) {
 	
   // Only publish files owned by this userId, and ignore
@@ -35,7 +35,7 @@ if (Meteor.isServer) {
   })
   // Allow rules for security. Should look familiar!
   // Without these, no file writes would be allowed
-  photos.allow({
+  /*photos.allow({
     // The creator of a file owns it. UserId may be null.
     insert: function (userId, file) {
       // Assign the proper owner when a file is created
@@ -58,7 +58,7 @@ if (Meteor.isServer) {
       // Only owners can upload file data
       return (userId === file.metadata.owner);
     }
-  });
+  });*/
 }
 if (Meteor.isClient) {
 	Router.map(function() {
