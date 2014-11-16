@@ -96,51 +96,128 @@ if (Meteor.isClient) {
   });
   
   Template.blogIndex.rendered = function(){
-    $('.full').css('background-image', 'url(/blogback-min.jpg) no-repeat center center fixed;' );
-    document.title = "Blog";
-    if (Blog.settings.title) {
-      return document.title += " | " + Blog.settings.title;
-    }
+   //$('.full').geopattern(Meteor.uuid());
+   $('.full').css('background-image',GeoPattern.generate(Meteor.uuid()).toDataUrl()).css('background-repeat','repeat');
+   document.title = "Blog";
+   if (Blog.settings.title) {
+    return document.title += " | " + Blog.settings.title;
   }
-  Template.aboutMe.age = function(){
-    oldEnd = new Date().getYear();
-    oldBegin = new Date('January 1 1993').getYear();
-    var newEnd = oldEnd - oldBegin;
-    return newEnd;
+
+}
+Template.blogIndex.destroyed = function(){
+ $('.full').css('background-image','');
+}
+Template.aboutMe.age = function(){
+  oldEnd = new Date().getYear();
+  oldBegin = new Date('January 1 1993').getYear();
+  var newEnd = oldEnd - oldBegin;
+  return newEnd;
+}
+
+
+
+
+Template.portfolio.created = function(){
+  this.subscription = Deps.autorun(function () {
+    Meteor.subscribe('portfolio');
+  });
+  Session.set('categoryOpacity',0);
+}
+Template.portfolio.portfolioCount = function(){
+  return Portfolio.find({'category':Session.get('currentCategory')}).count();
+}
+Template.portfolio.portfolios = function(){
+  return Portfolio.find({'category':Session.get('currentCategory')});
+}
+Template.portfolio.imagesource = function(){
+  return photos.baseURL + "/" + this.fileId;
+}
+Template.portfolio.categories = function(){
+  return [
+  {
+    name: 'Drawing',
+    picture: 'https://unsplash.com/photos/uWwN03Mg4Wg/download'
+  },
+  {
+    name: 'Digital',
+    picture: 'https://unsplash.com/photos/ICfoiW1d_90/download'
+  },
+  {
+    name: 'Video',
+    picture: 'https://unsplash.com/photos/4vr9a_sdJ78/download'
   }
-  Template.portfolio.portfolios = function(){
-    return Portfolio.find();
-  }
-  Template.portfolio.imagesource = function(){
-    return photos.baseURL + "/" + this.fileId;
-  }
-  Template.portfolio_admin.currentEntry = function(which){
-    var entry = Session.get('currentEntry');
-    if (entry != ''){
-     if (which == 'shown'){
-      return true;
+
+  ];
+};
+Template.portfolio.events({
+  'click .category': function(e,t){
+          var that = this;
+    if (Session.get('currentCategory') != undefined){
+      Session.set('categoryOpacity',0);
+      Meteor.setTimeout(function(){
+        Session.set('currentCategory',that.name);
+        Session.set('selectedEntry',undefined);
+        Session.set('selectedImage',undefined);
+        Session.set('categoryOpacity',1);
+      },500);
+    } else {
+      Session.set('currentCategory',that.name);
+      Session.set('selectedEntry',undefined);
+      Session.set('selectedImage',undefined);
+      Session.set('categoryOpacity',1);
     }
-    if (which == 'title'){
-      return entry.title;
-    }
-    if (which == 'description'){
-      return entry.description;
-    }
-    if (which == 'imagesource'){
-      return photos.baseURL + "/" + entry.fileId;
-    }
-  }
-  else {return false;}
+  },
+  'click .portfolio-entry' : function(e,t){
+    Session.set('selectedEntry',this);
+    Session.set('selectedImage',this.images[0]);
+  },
+  'click .otherImage' : function(e,t){
+   Session.set('selectedImage',this.concat());
+ }
+});
+Template.portfolio.categoryOpacity = function(){
+ return "opacity: " + Session.get('categoryOpacity'); 
+}
+Template.portfolio.currentPortfolio = function(){
+  return Session.get('selectedEntry');
+}
+Template.portfolio.currentImage = function(a){
+  if (this.concat() == Session.get('selectedImage')) return "opacity: 1;";
+  else return null;
+}
+Template.portfolio.entryOpacity = function(){
+  if (Session.get('selectedEntry')) return "opacity: 1;";
+  else return null;
 }
 Template.portfolio_admin.portfolios = function(){
   return Portfolio.find();
 }
+Template.portfolio_admin.currentEntry = function(which){
+  var entry = Session.get('currentEntry');
+  if (entry != ''){
+   if (which == 'shown'){
+    return true;
+  }
+  if (which == 'title'){
+    return entry.title;
+  }
+  if (which == 'description'){
+    return entry.description;
+  }
+  if (which == 'imagesource'){
+    return photos.baseURL + "/" + entry.fileId;
+  }
+}
+else {return false;}
+}
+
 Template.portfolio_admin.created = function(){
   Session.set('currentEntry','');
 }
 Template.portfolio_admin.rendered = function(){
   photos.resumable.assignDrop($(".portfolio_admin"));
 }
+
 Template.portfolio_admin.events({
   'click .addEntry': function(e){
    console.log('hello!');

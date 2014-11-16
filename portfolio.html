@@ -1,17 +1,65 @@
-<template name="portfolio">
+<template name="portfolio-old">
 
-  <style> .full{ background: url(/pittsburgh.jpg) no-repeat center center fixed;}</style>
   <div class="portfolio">
     <h1 class="page-header">Portfolio <small>See all my stuff</small></h1>
 
-      {{#each portfolios}}
-      <div class="item">
-        <div class="caption">
-          <img src={{imagesource}} />
-          <h3>{{{title}}}</h3>
-          <p>{{description}}</p>
+    {{#each portfolios}}
+    <div class="item">
+      <div class="caption">
+        <img src={{imagesource}} />
+        <h3>{{{title}}}</h3>
+        <p>{{description}}</p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="portfolio">
+  <div class="portfolio">
+    <h1 class="page-header">Portfolio <small>See all my stuff</small></h1>
+    <div class="portfolio-container">
+      <div class="categories sideleft">
+        <ul>
+          {{#each categories}}
+          <li class="category"><span>{{name}}</span><img draggable='false' src={{picture}} /></li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="portfolio-content" style={{categoryOpacity}}>
+        <ul>
+          <div class="portfolio-wrapper" style="width: calc(140px * {{portfolioCount}});">
+            {{#each portfolios}}
+            <li class="portfolio-entry">
+              <div class="img-container">
+                <img src={{preview}} />
+              </div>
+            </li>
+            {{/each}}
+          </div>
+        </ul>
+        <div class="portfolio-page" style={{entryOpacity}}>
+          {{#if currentPortfolio}}
+          <div class="page-center">
+            {{#each currentPortfolio.images}}
+
+            <img class="main" src={{this}} style={{currentImage 'this'}}/>
+            {{/each}}
+          </div>
+          <div class="page-right">
+            <h2>{{currentPortfolio.name}} - 
+              <span class="tagline">{{{currentPortfolio.tagline}}}</span></h2>
+              <p class="description">{{{currentPortfolio.description}}}
+              </p>
+              {{#each currentPortfolio.images}}
+              <div class="otherImageHolder">
+                <img class="otherImage" src={{this}} />
+              </div>
+              {{/each}}
+            </div>
+            {{/if}}
+          </div>
         </div>
       </div>
-      {{/each}}
-      </div>
-</template>
+    </div>
+  </template>

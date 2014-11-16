@@ -77,12 +77,12 @@ body:before {
   box-shadow:         inset 3px 3px 5px 6px #000;
 }
 
-#login-name-link, #login-sign-in-link{
+#login-buttons{
   opacity: 0;
 }
 
-#login-name-link:hover, #login-sign-in-link:hover{
-  opacity: 0.2;
+#login-buttons:hover{
+  opacity: 0.1;
 }
 
 #mymeteor-blog {

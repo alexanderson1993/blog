@@ -8,12 +8,12 @@ insecure
 jquery
 accounts-password
 accounts-ui
-accounts-facebook
+accounts-google
 accounts-base
-ryw:blog
 mizzao:bootstrap-3
 iron:router
 iron:core
 iron:layout
 iron:dynamic-template
+ryw:blog@0.5.10
 
