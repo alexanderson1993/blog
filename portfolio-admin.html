@@ -1,0 +1,49 @@
+<template name="portfolio_admin">
+	<div class="row-fluid portfolio_admin">
+		<h3>Portfolio Admin</h3>
+		<button class="btn btn-link addEntry">Add Portfolio Entry</button>
+				{{#if currentEntry "shown"}}
+				<button class="btn btn-link removeEntry">Remove Portfolio Entry</button>
+				{{/if}}
+		<div class="col-sm-3 portfolioList">
+			<div class="list">
+				{{#each portfolios}}
+				<p class="portfolio">{{name}}</p>
+				{{/each}}
+			</div>
+		</div>
+		{{#if currentEntry "shown"}}
+		<div class="col-sm-6 portfolioEdit">
+			<div>
+				<label>
+					Title:
+					<input class="form-control titleInput" type="text" value={{currentEntry.title}} />
+				</label>
+			</div>
+			<div>
+				<label>
+					Tagline:
+					<input class="form-control taglineInput" type="text" value={{currentEntry.tagline}} />
+			</div>
+			<div>
+				<label>
+					Description:
+					<textarea class="form-control descriptionInput">{{currentEntry.description}}</textarea>
+				</label>
+			</div>
+			<div>
+				<label class="file .fileDrop">
+					<input type="file" id="file">
+					<span class="file-custom"></span>
+				</label>
+			</div>
+			<div class="image">
+			</div>
+			<button class="btn btn-link submitPortfolio">Submit</button>
+		</div>
+		<div class="col-sm-2">
+			<img src={{currentEntry 'imagesource'}} />
+		</div>
+		{{/if}}
+	</div>
+</template>
